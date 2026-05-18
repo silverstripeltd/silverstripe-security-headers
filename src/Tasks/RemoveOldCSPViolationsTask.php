@@ -13,7 +13,7 @@ use Symfony\Component\Console\Command\Command;
 
 class RemoveOldCSPViolationsTask extends BuildTask
 {
-    protected string $title = 'Remove old CSP violation reports';
+    protected $title = 'Remove old CSP violation reports';
 
     /**
      * {@inheritDoc}
@@ -28,6 +28,11 @@ class RemoveOldCSPViolationsTask extends BuildTask
         $output->writeln("Job queued with ID $jobId");
 
         return Command::SUCCESS;
+    }
+
+    // CMS 5 compatibility stub - CMS 6 uses execute() above
+    public function run($request): void
+    {
     }
 
     /**
