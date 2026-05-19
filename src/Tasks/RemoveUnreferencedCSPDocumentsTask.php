@@ -11,9 +11,9 @@ use Symfony\Component\Console\Command\Command;
 
 class RemoveUnreferencedCSPDocumentsTask extends BuildTask
 {
-    protected string $title = 'Remove unreferenced CSP Document URIs';
+    protected $title = 'Remove unreferenced CSP Document URIs';
 
-    protected string $description =
+    protected $description =
         'CSP Document URIs that are not referenced by a CSP violation report can be safely removed.';
 
     /**
@@ -29,6 +29,11 @@ class RemoveUnreferencedCSPDocumentsTask extends BuildTask
         $output->writeln("Job queued with ID $jobId");
 
         return Command::SUCCESS;
+    }
+
+    // CMS 5 compatibility stub - CMS 6 uses execute() above
+    public function run($request): void
+    {
     }
 
     public function isEnabled(): bool
