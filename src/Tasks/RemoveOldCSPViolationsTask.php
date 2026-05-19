@@ -13,7 +13,7 @@ use Symfony\Component\Console\Command\Command;
 
 class RemoveOldCSPViolationsTask extends BuildTask
 {
-    protected $title = 'Remove old CSP violation reports';
+    protected string $title = 'Remove old CSP violation reports';
 
     /**
      * {@inheritDoc}
@@ -30,16 +30,11 @@ class RemoveOldCSPViolationsTask extends BuildTask
         return Command::SUCCESS;
     }
 
-    // CMS 5 compatibility stub - CMS 6 uses execute() above
-    public function run($request): void
-    {
-    }
-
     /**
      * {@inheritDoc}
      * @see \SilverStripe\Dev\BuildTask::getDescription()
      */
-    public function getDescription(): string
+    public static function getDescription(): string
     {
         // Map DateInterval fields to text names. Order is significant.
         static $parts = [
@@ -60,7 +55,7 @@ class RemoveOldCSPViolationsTask extends BuildTask
             if ($retention->$field != 0) {
                 // Microseconds are a fraction of a second. Everything else is defined in terms of itself.
                 $value = $field === 'f'
-                    ? round($retention->$field * 1000000.0, 0, PHP_ROUND_HALF_UP)
+                    ? round($retention->$field * 1000000.0, 0, \RoundingMode::HalfAwayFromZero)
                     : $retention->$field;
 
                 // Cheap and nasty pluralisation.
