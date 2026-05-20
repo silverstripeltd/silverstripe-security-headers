@@ -10,7 +10,7 @@ use SilverStripe\Forms\GridField\GridField_FormAction;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Extensible;
 use SilverStripe\Security\Security;
-use SilverStripe\View\ArrayData;
+use SilverStripe\Model\ArrayData;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\View\SSViewer;
 use SilverStripe\Forms\FieldList;
@@ -23,7 +23,7 @@ use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\Forms\ReadonlyField;
-use SilverStripe\ORM\ArrayList;
+use SilverStripe\Model\List\ArrayList;
 use SilverStripe\View\Requirements;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
 
